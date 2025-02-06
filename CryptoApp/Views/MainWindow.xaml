@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CryptoApp"
+        xmlns:local="clr-namespace:CryptoApp" xmlns:viewmodels="clr-namespace:CryptoApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CryptoViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
     <Grid>
@@ -12,10 +12,10 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button x:Name="HomePageButton" Content="HOME" Height="35" MinWidth="100" Margin="5,5,5,5" Click="HomePage_Click"></Button>
-            <Button x:Name="Page2" Content="Page2" Height="35" MinWidth="100" Margin="5,5,5,5" Click="Page2_Click"></Button>
-            <Button x:Name="Page3" Content="Page3" Height="35" MinWidth="100" Margin="5,5,5,5" Click="Page3_Click"></Button>
-            <TextBox x:Name="SearchBox" Width="300" Height="30"  Margin="40,0,5,0" VerticalAlignment="Center">
+            <Button x:Name="HomePageButton" Content="HOME" Height="35" MinWidth="100" Margin="40,5,5,5" 
+                    Command="{Binding OpenHomePageCommand}"></Button>
+            <TextBox x:Name="SearchBox" Width="300" Height="30"  Margin="40,0,5,0" VerticalAlignment="Center"
+                     Text="{Binding SearchTextCrypto, UpdateSourceTrigger=PropertyChanged}">
                 <TextBox.Style>
                     <Style TargetType="TextBox">
                         <Setter Property="Foreground" Value="Black"/>
@@ -23,7 +23,8 @@
                     </Style>
                 </TextBox.Style>
             </TextBox>
-            <Button x:Name="SearchButton" Content="Search" Height="35" MinWidth="100" Margin="5"></Button>
+            <Button x:Name="SearchButton" Content="Search" Height="35" MinWidth="100" Margin="5"
+                    Command="{Binding SearchCommand}" CommandParameter="{Binding SearchTextCrypto}"></Button>
         </StackPanel>
         <Frame x:Name="MyFrame" Grid.Row="1" Background="AliceBlue" NavigationUIVisibility="Hidden"></Frame>
     </Grid>

@@ -1,42 +1,19 @@
 ﻿using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using CryptoApp.Helpers;
+using CryptoApp.ViewModels;
+using CryptoApp.Views;
 
 namespace CryptoApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
-            Debug.WriteLine("START");
             InitializeComponent();
+            DataContext = Application.Current.Resources["CryptoViewModel"];
             MyFrame.Navigate(new HomePage());
-        }
-
-        private void HomePage_Click(object sender, RoutedEventArgs e)
-        {
-            MyFrame.Navigate(new HomePage());
-        }
-
-        private void Page2_Click(object sender, RoutedEventArgs e)
-        {
-            MyFrame.Navigate(new Page2());
-        }
-
-        private void Page3_Click(object sender, RoutedEventArgs e)
-        {
-            MyFrame.Navigate(new Page3());
         }
     }
 }

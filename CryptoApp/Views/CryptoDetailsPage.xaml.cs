@@ -1,12 +1,9 @@
-﻿using CryptoApp.ViewModels;
+﻿using CryptoApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,18 +15,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CryptoApp
+namespace CryptoApp.Views
 {
-    
-    public partial class HomePage : Page
+    public partial class CryptoDetailsPage : Page
     {
-        public HomePage()
+        public CryptoDetailsPage(Crypto crypto)
         {
             InitializeComponent();
-            DataContext = Application.Current.Resources["CryptoViewModel"];
+            DataContext = crypto;
         }
-
-       
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
+            e.Handled = true;
+        }
     }
-
 }

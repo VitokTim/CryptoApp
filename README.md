@@ -6,7 +6,7 @@ The main page displays the top 10 most popular cryptocurrencies along with their
 Users can:
 ✅ View detailed information about each cryptocurrency.
 ✅ Navigate to the official website of a selected cryptocurrency.
-✅ Search for a cryptocurrency by name or code.
+✅ Search for a cryptocurrency by name.
 
 🛠 Functionality
 🔹 Main Page
